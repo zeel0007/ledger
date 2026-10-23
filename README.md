@@ -390,24 +390,3 @@ npm start
 ```
 
 ---
-
-## ⚙️ Environment Configuration
-
-Create a `.env` file in the root directory based on `.env.example`:
-
-```env
-PORT=3000
-MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/backend-ledger?retryWrites=true&w=majority
-JWT_SECRET=your_super_secret_jwt_key_here
-
-# Nodemailer / OAuth2 (Optional for local testing)
-EMAIL_USER=your_email@gmail.com
-CLIENT_ID=your_oauth_client_id
-CLIENT_SECRET=your_oauth_client_secret
-REFRESH_TOKEN=your_oauth_refresh_token
-```
-
----
-
-## 📄 License
-ISC
