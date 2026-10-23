@@ -323,30 +323,4 @@ sequenceDiagram
 
 ---
 
-## 🚀 Getting Started
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v16+ recommended)
-- [MongoDB](https://www.mongodb.com/) (v4.0+ with Replica Set enabled for multi-document ACID transactions)
-
-### Installation
-```bash
-# 1. Clone repository
-git clone https://github.com/zeel0007/ledger.git
-cd ledger
-
-# 2. Install dependencies
-npm install
-
-# 3. Configure environment variables
-cp .env.example .env
-# Edit .env with your MongoDB URI, JWT secret, and email credentials
-
-# 4. Start development server
-npm run dev
-
-# Or start in production mode
-npm start
-```
-
----
