@@ -130,46 +130,6 @@ flowchart LR
 
 ---
 
-### Level 1: Subsystem Level
-```mermaid
-flowchart TD
-    User(["👤 User / Client"])
-    EmailService(["📧 Email Gateway"])
-
-    P1(("1.0<br/>Auth & Session<br/>Management"))
-    P2(("2.0<br/>Account & Balance<br/>Management"))
-    P3(("3.0<br/>Transaction &<br/>Ledger Engine"))
-    P4(("4.0<br/>Notification<br/>Dispatcher"))
-
-    D1[("D1: Users")]
-    D2[("D2: Token Blacklist (TTL)")]
-    D3[("D3: Accounts")]
-    D4[("D4: Transactions")]
-    D5[("D5: Immutable Ledger")]
-
-    User -->|"Register / Login / Logout"| P1
-    P1 <-->|"Read / Write User Creds"| D1
-    P1 -->|"Write Revoked Token on Logout"| D2
-    P1 -.->|"Check Blacklist"| D2
-    P1 -->|"Trigger Welcome Email"| P4
-
-    User -->|"Create Account / Get Balance"| P2
-    P2 <-->|"Read / Write Account Info"| D3
-    P2 <--|"Read Historical Entries (Aggregation)"| D5
-    P2 -->|"Return Balance"| User
-
-    User -->|"Initiate Transfer (IdempotencyKey, Amount)"| P3
-    P3 <-->|"Check / Store Idempotency"| D4
-    P3 <--|"Validate Account Status"| D3
-    P3 <--|"Query Derived Balance"| D5
-    P3 -->|"Atomic Write (DEBIT + CREDIT)"| D5
-    P3 -->|"Update Txn Status (COMPLETED)"| D4
-    P3 -->|"Trigger Txn Email"| P4
-
-    P4 -->|"Send Mail Payloads"| EmailService
-```
-
----
 
 ### Level 2: Transaction Lifecycle
 ```mermaid
